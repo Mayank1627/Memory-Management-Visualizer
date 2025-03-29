@@ -18,6 +18,7 @@ def fifo(reference_string, frames):
         gantt_chart.append(list(memory))
     return page_faults, gantt_chart
 
+
 def lru(reference_string, frames):
     memory = []
     page_faults = 0
