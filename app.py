@@ -19,7 +19,7 @@ def fifo(reference_string, frames):
     return page_faults, gantt_chart
 
 
-def lru(reference_string, frames):
+    def lru(reference_string, frames):
     memory = []
     page_faults = 0
     gantt_chart = []
@@ -34,6 +34,9 @@ def lru(reference_string, frames):
             memory.append(page)
         gantt_chart.append(list(memory))
     return page_faults, gantt_chart
+
+
+
 
 class MemoryManagementSimulator:
     def __init__(self, root):
