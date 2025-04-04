@@ -77,7 +77,7 @@ class MemoryManagementSimulator:
         
         messagebox.showinfo("Results", f"{algorithm} Algorithm\nTotal Page Faults: {faults}")
         self.plot_gantt_chart(gantt_chart, algorithm)
-    
+                
     def plot_gantt_chart(self, gantt_chart, algorithm_name):
         fig, ax = plt.subplots()
         colors = plt.cm.get_cmap("tab10", len(set(sum(gantt_chart, []))))
