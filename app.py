@@ -65,21 +65,7 @@ class MemoryManagementSimulator:
         self.ref_string_entry.delete(0, tk.END)
         self.ref_string_entry.insert(0, ",".join(map(str, self.reference_string)))
     
-    def run_algorithm(self, algorithm):
-        try:
-            self.reference_string = list(map(int, self.ref_string_entry.get().split(',')))
-            self.frames = int(self.frames_entry.get())
-        except ValueError:
-            messagebox.showerror("Error", "Invalid input! Please check your reference string and number of frames.")
-            return
-        
-        if algorithm == "FIFO":
-            faults, gantt_chart = fifo(self.reference_string, self.frames)
-        elif algorithm == "LRU":
-            faults, gantt_chart = lru(self.reference_string, self.frames)
-        
-        messagebox.showinfo("Results", f"{algorithm} Algorithm\nTotal Page Faults: {faults}")
-        self.plot_gantt_chart(gantt_chart, algorithm)
+    
     
     def plot_gantt_chart(self, gantt_chart, algorithm_name):
         fig, ax = plt.subplots()
@@ -100,6 +86,23 @@ class MemoryManagementSimulator:
         
         ani = animation.FuncAnimation(fig, update, frames=len(gantt_chart), repeat=False)
         plt.show()
+
+
+    def run_algorithm(self, algorithm):
+        try:
+            self.reference_string = list(map(int, self.ref_string_entry.get().split(',')))
+            self.frames = int(self.frames_entry.get())
+        except ValueError:
+            messagebox.showerror("Error", "Invalid input! Please check your reference string and number of frames.")
+            return
+        
+        if algorithm == "FIFO":
+            faults, gantt_chart = fifo(self.reference_string, self.frames)
+        elif algorithm == "LRU":
+            faults, gantt_chart = lru(self.reference_string, self.frames)
+        
+        messagebox.showinfo("Results", f"{algorithm} Algorithm\nTotal Page Faults: {faults}")
+        self.plot_gantt_chart(gantt_chart, algorithm)
 
 if __name__ == "__main__":
     root = tk.Tk()
