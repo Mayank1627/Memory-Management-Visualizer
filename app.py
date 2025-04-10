@@ -33,7 +33,7 @@ def lru(reference_string, frames):
             memory.remove(page)
             memory.append(page)
         gantt_chart.append(list(memory))
-    return page_faults, gantt_chart
+    return page_faults, gantt_chart // Random Comment
 
 class MemoryManagementSimulator:
     def __init__(self, root):
